@@ -34,8 +34,8 @@ spec:
               name: drupal-mysql-secret
               key:  MYSQL_USER
         volumeMounts:
-        - mountPath: var/lib/mysql
-          name: mysql-pvc
+        - name: mysql-pvc
+          mountPath: /var/lib/mysql
           subPath: dbdata
         envFrom:
         - secretRef:
@@ -44,4 +44,5 @@ spec:
       - name: mysql-pvc
         persistentVolumeClaim:
           claimName: drupal-mysql-pvc
+
 
