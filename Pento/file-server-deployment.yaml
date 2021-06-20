@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: file-server
+  labels:
+    app: file-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: file-server
+  template:
+    metadata:
+        labels:
+          app: file-server
+    spec:
+      containers:
+        - name: fileserver
+          image: kodekloud/fileserver
+          volumeMounts:
+          - name: data-store
+            mountPath: "/web"
+      volumes:
+      - name: data-pvc
+        persistentVolumeClaim:
+          claimName: data-pvc
+ 
+
