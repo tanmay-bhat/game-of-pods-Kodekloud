@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: iron-gallery
-        image: kodekloud/irondb:2.0
+        image: kodekloud/irongallery:2.0
         imagePullPolicy: Always
         ports:  
         - containerPort: 80
@@ -27,6 +27,9 @@ spec:
           - name: config
             mountPath: '/usr/share/nginx/html/data'
         resources:
+          limits:
+            cpu: 50m
+            memory: 100Mi
           requests:
             cpu: 50m
             memory: 100Mi
