@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iron-gallery
+  labels:
+    run: iron-gallery
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: iron-gallery
+  template:
+    metadata:
+      labels:
+        run: iron-gallery
+    spec:
+      containers:
+      - name: iron-gallery
+        image: kodekloud/irondb:2.0
+        imagePullPolicy: Always
+        ports:  
+        - containerPort: 80
+          name: iron-gallery
+        volumeMounts:
+          - name: images
+            mountPath: '/usr/share/nginx/html/uploads'
+          - name: config
+            mountPath: '/usr/share/nginx/html/data'
+        resources:
+          requests:
+            cpu: 50m
+            memory: 100Mi
+      volumes:
+          - name: config
+            emptyDir: {}
+          - name: images
+            emptyDir: {}
+
