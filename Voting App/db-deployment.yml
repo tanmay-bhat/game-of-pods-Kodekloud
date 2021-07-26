@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-deployment
+  namespace: vote
+  labels:
+    app: db
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      containers:
+      - name: db
+        image: postgres:9.4
+        imagePullPolicy: Always
+        ports:  
+        - containerPort: 5432
+          name: redis
+        resources:  
+          limits:
+            cpu: 100m
+            memory: 50Mi
+        volumeMounts:
+          - name:  db-data
+            mountPath: '/var/lib/postgresql/data'
+      volumes:
+        - name: db-data
+          emptyDir: {}
