@@ -5,6 +5,7 @@ metadata:
   namespace: vote
   labels:
     app: redis
+spec:
   replicas: 1
   selector:
     matchLabels:
