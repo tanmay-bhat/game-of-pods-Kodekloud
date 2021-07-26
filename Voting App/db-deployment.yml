@@ -19,6 +19,9 @@ spec:
       - name: db
         image: postgres:9.4
         imagePullPolicy: Always
+        env:
+            - name: POSTGRES_PASSWORD
+              value: kodekloud-demo
         ports:  
         - containerPort: 5432
           name: redis

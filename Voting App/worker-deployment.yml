@@ -20,6 +20,4 @@ spec:
         image: kodekloud/examplevotingapp_worker
         imagePullPolicy: Always
         resources:  
-          limits:
-            cpu: 100m
-            memory: 50Mi
+

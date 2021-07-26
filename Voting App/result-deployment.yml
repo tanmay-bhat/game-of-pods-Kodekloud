@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: result-deplyment
+  name: result-deployment
   namespace: vote
   labels:
     app: result
@@ -19,7 +19,7 @@ spec:
       - name: result
         image: kodekloud/examplevotingapp_result:before
         imagePullPolicy: Always
-        resources:  
-          limits:
-            cpu: 100m
-            memory: 50Mi
+        ports:
+        - containerPort: 80
+          name: http
+

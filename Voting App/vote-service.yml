@@ -7,6 +7,8 @@ metadata:
     app: vote-app
 spec:
   type: NodePort
+  selector:
+    app: vote-app
   ports:
     - port: 5000
       targetPort: 80
