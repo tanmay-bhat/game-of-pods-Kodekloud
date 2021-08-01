@@ -5,10 +5,11 @@ metadata:
   labels:
     run: iron-gallery
 spec:
-  type: "ClusterIP"
+  type: NodePort
   selector:
     run: iron-gallery
   ports:
     - port: 80
       targetPort: 80
       nodePort: 30099
+      name: http
